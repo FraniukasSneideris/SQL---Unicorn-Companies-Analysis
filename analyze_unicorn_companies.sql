@@ -12,9 +12,9 @@ FROM (SELECT *
       ON d.company_id = c.company_id
       WHERE EXTRACT(YEAR FROM d.date_joined) BETWEEN 2019 AND 2021) AS subquery
 WHERE industry IN (SELECT industry
-                  FROM industries
-                  GROUP BY industry
-                  ORDER BY COUNT(industry) DESC
-                  LIMIT 3)
+                   FROM industries
+                   GROUP BY industry
+                   ORDER BY COUNT(industry) DESC
+                   LIMIT 3)
 GROUP BY industry, year
 ORDER BY year DESC, num_unicorns DESC;
