@@ -1,4 +1,4 @@
-# SQL---Analyzing-Unicorn-Companies
+# SQL---Unicorn-Companies-Analysis
 
 
 ## Overview
