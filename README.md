@@ -89,7 +89,9 @@ The query returns the following table:
 | Internet software & services           | 2019 | 13           | 4.23                         |
 | E-commerce & direct-to-consumer        | 2019 | 12           | 2.58                         |
 
-## Conclusion
+## Results in Graphics
+###
 ![image](https://github.com/user-attachments/assets/edd3d9ca-116a-459e-b892-58ca2bb685a6)
 
+## Conclusion
 Based on the analysis of unicorn data from 2019 to 2021, we can conclude that the **Fintech** industry has the highest number of unicorns, with an impressive average valuation that peaked in 2019 at 6.80 billion dollars. The **Internet Software & Services** and **E-commerce & Direct-to-Consumer** industries also show strong performances, with consistent unicorn creation across all three years. This information provides valuable insights for the investment firm to structure their future investment strategy.
