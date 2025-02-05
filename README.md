@@ -1,5 +1,6 @@
 # SQL---Analyzing-Unicorn-Companies
 
+
 ## Overview
 This project aims to analyze unicorn company data from 2019 to 2021, focusing on identifying the top-performing industries based on the number of new unicorns created during this period. By querying the provided unicorns database, we analyze trends in company valuations, the rate at which new unicorns emerge, and the industries leading this growth. The goal is to provide insights into which industries have the highest valuations and which sectors are seeing the most unicorn creation. These insights can help an investment firm structure its portfolio by understanding industry trends and the emergence of high-value companies.
 
