@@ -91,8 +91,7 @@ The query returns the following table:
 
 ## Results in Graphics
 ### Average Valuation (Billions USD) by Industry and Year
-![image](https://github.com/user-attachments/assets/26047c69-1d5f-458d-83db-459e72210b57)
-
+![image](https://github.com/user-attachments/assets/3d44b3a1-7a77-44ae-832a-0c9645ac9742)
 
 ### Number of Unicorns by Industry and Year
 ![image](https://github.com/user-attachments/assets/98f3c1bb-81b7-47cd-ac69-f6f750b8b73d)
