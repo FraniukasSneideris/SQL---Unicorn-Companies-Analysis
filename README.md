@@ -1,8 +1,10 @@
-# SQL---Unicorn-Companies-Analysis
+# SQL and Python---Unicorn-Companies-Data Analysis Comparison
 
 
 ## Overview
 This project aims to analyze unicorn company data from 2019 to 2021, focusing on identifying the top-performing industries based on the number of new unicorns created during this period. By querying the provided unicorns database, we analyze trends in company valuations, the rate at which new unicorns emerge, and the industries leading this growth. The goal is to provide insights into which industries have the highest valuations and which sectors are seeing the most unicorn creation. These insights can help an investment firm structure its portfolio by understanding industry trends and the emergence of high-value companies.
+
+While initially thought for SQL analysis, I decided to perform the analysis both with SQL and Python to compare both approaches.
 
 
 ## Task Summary
@@ -41,7 +43,7 @@ The unicorns database consists of the following tables:
 - `country`: Country where the company is headquartered
 - `continent`: Continent where the company is headquartered
 
-## Query
+## SQL Analysis
 The SQL query below is used to fetch the required results:
 
 ```sql
@@ -72,6 +74,45 @@ ORDER BY year DESC, num_unicorns DESC;
 - A subquery is used to join the relevant tables (dates, funding, industries, and companies) to filter companies that became unicorns in 2019, 2020, or 2021.
 - The industries are filtered to only include the top three industries based on the number of unicorns.
 - The results are grouped by industry and year, and sorted in descending order by year and number of unicorns.
+
+## Python Analysis
+```python
+import pandas as pd
+
+# Loading the data
+dates = pd.read_csv("dates.csv")
+funding = pd.read_csv("funding.csv")
+industries = pd.read_csv("industries.csv")
+companies = pd.read_csv("companies.csv")
+
+# Merging all tables
+all_dfs = dates.merge(funding, on="company_id", how="left") \
+               .merge(industries, on="company_id", how="left") \
+               .merge(companies, on="company_id", how="left")
+
+# Parsing date_joined and extract year
+all_dfs["date_joined"] = pd.to_datetime(all_dfs["date_joined"])
+all_dfs["year"] = all_dfs["date_joined"].dt.year
+
+# Filtering unicorns based on date_joined year
+unicorns_year = all_dfs[all_dfs["year"].isin([2019, 2020, 2021])]
+
+# Determining top 3 industries based on filtered data 
+top_three_ind = unicorns_year.groupby("industry")["company_id"].count().sort_values(ascending=False).head(3)
+top_industries = top_three_ind.index.tolist()
+
+# Filtering for top 3 industries
+unicorns_filtered = unicorns_year[unicorns_year["industry"].isin(top_industries)]
+
+# Grouping and aggregating
+unicorns_grouped = unicorns_filtered.groupby(["industry", "year"]).agg(
+    num_unicorns=("company_id", "count"),
+    average_valuation_billions=("valuation", lambda x: round(x.mean() / 1000000000, 2))
+).sort_values(by=["year", "num_unicorns"], ascending=[False, False])
+```
+
+### Python Analysis Breakdown
+The Python code above replicates the same logic as the SQL query using pandas. After loading the datasets, it merges them using merge() with how="left" to simulate SQL left joins. The pd.to_datetime() function is used to convert the date_joined column into a datetime format, and .dt.year is applied to extract the year. The dataset is then filtered to include only unicorns from the years 2019 to 2021 using boolean indexing with .isin(). To determine the top three industries by unicorn count, the code uses groupby() and count() followed by sort_values() and head(3), then extracts the industry names with .index.tolist(). Another filtering step keeps only the rows belonging to these top industries. Finally, the data is grouped again by industry and year using groupby().agg() to calculate both the number of unicorns and the average valuation in billions (using a lambda function and mean()), and the final result is sorted with sort_values() by year and count in descending order.
 
 
 ## Results
