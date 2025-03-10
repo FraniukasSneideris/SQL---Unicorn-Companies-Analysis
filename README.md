@@ -114,9 +114,65 @@ unicorns_grouped = unicorns_filtered.groupby(["industry", "year"]).agg(
 ### Python Analysis Breakdown
 The Python code above replicates the same logic as the SQL query using pandas. After loading the datasets, it merges them using merge() with how="left" to simulate SQL left joins. The pd.to_datetime() function is used to convert the date_joined column into a datetime format, and .dt.year is applied to extract the year. The dataset is then filtered to include only unicorns from the years 2019 to 2021 using boolean indexing with .isin(). To determine the top three industries by unicorn count, the code uses groupby() and count() followed by sort_values() and head(3), then extracts the industry names with .index.tolist(). Another filtering step keeps only the rows belonging to these top industries. Finally, the data is grouped again by industry and year using groupby().agg() to calculate both the number of unicorns and the average valuation in billions (using a lambda function and mean()), and the final result is sorted with sort_values() by year and count in descending order.
 
+---
+
+## Comparison of SQL and Python Methods
+
+Both SQL and Python (using pandas) follow a similar logical process to extract and process the data, but they achieve it using different methods. Below is a breakdown of how each step is handled in both approaches:
+
+
+#### 1. **Data Joining**
+- **SQL:** Uses `LEFT JOIN` to combine multiple tables on the `company_id` column.
+- **Python:** Uses `merge(how="left")` multiple times to replicate the left join behavior and combine all datasets.
+
+
+#### 2. **Filtering by Year**
+- **SQL:** Applies `WHERE EXTRACT(YEAR FROM date_joined) BETWEEN 2019 AND 2021` to filter the data.
+- **Python:** Converts the `date_joined` column to datetime using `pd.to_datetime()`, extracts the year using `.dt.year`, and filters the DataFrame using `.isin([2019, 2020, 2021])`.
+
+
+#### 3. **Finding Top 3 Industries**
+- **SQL:** Uses a subquery with `GROUP BY industry` and `ORDER BY COUNT(industry) DESC LIMIT 3` to identify the top 3 industries by unicorn count.
+- **Python:** Uses `groupby("industry")["company_id"].count().sort_values(ascending=False).head(3)` to get top industries, then extracts their names with `.index.tolist()`.
+
+
+#### 4. **Grouping and Aggregation**
+- **SQL:** Groups results by `industry` and `year`, then computes:
+  - `COUNT(*)` for number of unicorns.
+  - `ROUND(AVG(valuation/1000000000), 2)` for average valuation in billions.
+- **Python:** Uses `.groupby(["industry", "year"]).agg()` to:
+  - Count unicorns with `("company_id", "count")`.
+  - Compute average valuation with a lambda function: `lambda x: round(x.mean() / 1_000_000_000, 2)`.
+
+
+#### 5. **Sorting Results**
+- **SQL:** Orders the final output with `ORDER BY year DESC, num_unicorns DESC`.
+- **Python:** Applies `.sort_values(by=["year", "num_unicorns"], ascending=[False, False])` to achieve the same sorting logic.
+
+
+### Key Differences
+
+- **Declarative vs Imperative:**  
+  SQL is a declarative language that specifies *what* you want, while pandas in Python is imperative and requires step-by-step *how* instructions.
+
+- **Type Handling:**  
+  Python requires explicit conversions (e.g., `pd.to_datetime()`), whereas SQL has built-in date functions like `EXTRACT(YEAR FROM ...)`.
+
+- **Filtering Strategy:**  
+  SQL uses nested subqueries to filter data, while pandas separates filtering into intermediate steps using list extraction and boolean masks.
+
+- **Environment:**  
+  SQL operates on a database server and is optimized for large-scale querying.  
+  pandas works in-memory and offers more flexibility for custom logic and data manipulation in Python scripts or Jupyter notebooks.
+
+
+Both methods lead to the same analytical result but highlight different strengths:
+- SQL is concise and efficient for querying relational databases.
+- pandas provides powerful data manipulation tools for more programmatic and customizable analysis.
+
 
 ## Results
-The query returns the following table:
+Both methods return the following table:
 
 | Industry                               | Year | Num Unicorns | Average Valuation (Billions) |
 |----------------------------------------|------|--------------|------------------------------|
