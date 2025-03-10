@@ -90,11 +90,10 @@ The query returns the following table:
 | E-commerce & direct-to-consumer        | 2019 | 12           | 2.58                         |
 
 ## Results in Graphics
-### Average Valuation (Billions USD) by Industry and Year
-![image](https://github.com/user-attachments/assets/3d44b3a1-7a77-44ae-832a-0c9645ac9742)
+![image](https://github.com/user-attachments/assets/cadf9521-aaf9-4b8c-8837-cc7e379e0287)
 
-### Number of Unicorns by Industry and Year
-![image](https://github.com/user-attachments/assets/98f3c1bb-81b7-47cd-ac69-f6f750b8b73d)
+![image](https://github.com/user-attachments/assets/4e1de132-7961-47bf-bc20-8fa5aa5a943c)
+
 
 
 ## Conclusion
