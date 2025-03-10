@@ -170,6 +170,7 @@ Both methods lead to the same analytical result but highlight different strength
 - SQL is concise and efficient for querying relational databases.
 - pandas provides powerful data manipulation tools for more programmatic and customizable analysis.
 
+---
 
 ## Results
 Both methods return the following table:
