@@ -192,7 +192,17 @@ Both methods return the following table:
 
 ![image](https://github.com/user-attachments/assets/4e1de132-7961-47bf-bc20-8fa5aa5a943c)
 
-
+---
 
 ## Conclusion
+
+### Results
 Based on the analysis of unicorn data from 2019 to 2021, we can conclude that the **Fintech** industry has the highest number of unicorns, with an impressive average valuation that peaked in 2019 at 6.80 billion dollars. The **Internet Software & Services** and **E-commerce & Direct-to-Consumer** industries also show strong performances, with consistent unicorn creation across all three years. This information provides valuable insights for the investment firm to structure their future investment strategy.
+
+### Methodology
+While both SQL and Python are effective tools for conducting this type of analysis, **SQL stands out as faster and more user-friendly when it comes to structured data exploration and aggregation tasks**. Its declarative syntax allows for straightforward filtering, grouping, and sorting, making it ideal for concise and readable analysis.
+
+On the other hand, **Python (with pandas)** excels in scenarios that require **flexibility**, such as building automated ETL pipelines, performing complex transformations, or generating visualizations. Additionally, Python becomes particularly powerful when integrated with SQL (e.g., through tools like SQLite or SQLAlchemy), allowing analysts to combine the strengths of both languages in a seamless workflow.
+
+In summary, **SQL is the more efficient choice for quick, tabular insights**, while **Python provides scalability and customization** when working in a broader data pipeline or analytical environment.
+
