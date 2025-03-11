@@ -190,7 +190,8 @@ Both methods return the following table:
 ## Results in Graphics
 ![image](https://github.com/user-attachments/assets/cadf9521-aaf9-4b8c-8837-cc7e379e0287)
 
-![image](https://github.com/user-attachments/assets/4e1de132-7961-47bf-bc20-8fa5aa5a943c)
+![image](https://github.com/user-attachments/assets/14f01f18-506b-4987-9399-d30d7a1bfdae)
+
 
 ---
 
