@@ -188,10 +188,9 @@ Both methods return the following table:
 | E-commerce & direct-to-consumer        | 2019 | 12           | 2.58                         |
 
 ## Results in Graphics
-![image](https://github.com/user-attachments/assets/cadf9521-aaf9-4b8c-8837-cc7e379e0287)
-
 ![image](https://github.com/user-attachments/assets/14f01f18-506b-4987-9399-d30d7a1bfdae)
 
+![image](https://github.com/user-attachments/assets/d0ece70a-ed7d-4be3-be04-a2c097344d1d)
 
 ---
 
